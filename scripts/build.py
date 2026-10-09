@@ -35,7 +35,7 @@ def date_text(value):
 
 def nav(project):
     base = f'/{project["slug"]}/'
-    items = [('about', 'ゲーム紹介'), ('download', 'ダウンロード'), ('features', '特集'), ('news', 'お知らせ')]
+    items = [('about', 'ゲーム紹介'), ('download', 'ダウンロード'), ('features', 'マップ・武器'), ('news', 'お知らせ')]
     links = "".join(f'<a href="{base}#{key}">{label}</a>' for key, label in items)
     return f'<nav class="project-nav" aria-label="{esc(project["name"])} メニュー">{links}</nav>'
 
@@ -81,19 +81,19 @@ def load_entries(project, kind):
 
 
 def entry_row(entry, show_project=False):
-    category = entry.get('label', '特集' if entry['kind'] == 'features' else 'お知らせ')
+    category = entry.get('label', '紹介' if entry['kind'] == 'features' else 'お知らせ')
     label = esc(entry['project']['name']) + ' / ' + esc(category) if show_project else esc(category)
     return f'''<a class="entry-row" href="{entry['url']}"><time class="entry-date" datetime="{esc(entry['date'])}">{date_text(entry['date'])}</time><div><h3>{esc(entry['title'])}</h3><p>{esc(entry['summary'])}</p></div><span class="entry-kind">{label}</span></a>'''
 
 
 def project_card(project, index):
-    return f'''<a class="project-card" href="/{project['slug']}/"><div class="project-card-media"><img src="{esc(project['cover'])}" alt="{esc(project['cover_alt'])}" width="1824" height="1368" fetchpriority="high"><span class="image-caption">{esc(project['name'])} / IN DEVELOPMENT</span></div><div class="project-card-copy"><div class="tag-row"><span class="eyebrow">{esc(project['genre'])}</span><span class="status">{esc(project['status'])}</span></div><h3>{esc(project['name'])}</h3><p>{esc(project['description'])}</p><div class="card-foot"><span>{esc(project['platform'])} / PROJECT {index:02d}</span><strong>ゲーム紹介を見る</strong></div></div></a>'''
+    return f'''<a class="project-card" href="/{project['slug']}/"><div class="project-card-media"><img src="{esc(project['cover'])}" alt="{esc(project['cover_alt'])}" width="1824" height="1368" fetchpriority="high"><span class="image-caption">{esc(project['name'])} / 開発中</span></div><div class="project-card-copy"><div class="tag-row"><span class="eyebrow">{esc(project['genre'])}</span><span class="status">{esc(project['status'])}</span></div><h3>{esc(project['name'])}</h3><p>{esc(project['description'])}</p><div class="card-foot"><span>{esc(project['platform'])} / PROJECT {index:02d}</span><strong>ゲーム紹介を見る</strong></div></div></a>'''
 
 
 def spotlight(entry):
     cover = entry.get('cover', entry['project']['cover'])
     alt = entry.get('cover_alt', entry['project']['cover_alt'])
-    return f'''<a class="spotlight-card" href="{entry['url']}"><img src="{esc(cover)}" alt="{esc(alt)}" loading="lazy"><div class="spotlight-copy"><span class="eyebrow">{esc(entry.get('label', '特集'))}</span><h3>{esc(entry['title'])}</h3><p>{esc(entry['summary'])}</p><span class="text-link">特集を読む</span></div></a>'''
+    return f'''<a class="spotlight-card" href="{entry['url']}"><img src="{esc(cover)}" alt="{esc(alt)}" loading="lazy"><div class="spotlight-copy"><span class="eyebrow">{esc(entry.get('label', '紹介'))}</span><h3>{esc(entry['title'])}</h3><p>{esc(entry['summary'])}</p><span class="text-link">紹介を読む</span></div></a>'''
 
 
 def project_page(project, features_entries, news_entries):
@@ -118,13 +118,13 @@ def project_page(project, features_entries, news_entries):
                     breadcrumbs=breadcrumbs([('ゲーム一覧', '/'), (project['name'], None)]), project_nav=nav(project), facts=facts, features=features,
                     build_meta=f'<p class="build-meta">{" / ".join(meta)}</p>' if meta else '', build_note=esc(build['note']), download_action=action,
                     overview=MD.render((ROOT / 'content' / project['slug'] / 'overview.md').read_text(encoding='utf-8')),
-                    spotlights=''.join(spotlight(e) for e in features_entries) or '<p class="empty-state">特集は準備中です。</p>',
-                    news=''.join(entry_row(e) for e in news_entries) or '<p class="news-empty">新しいビルドや注目のアップデートは、こちらでお知らせします。</p>')
+                    spotlights=''.join(spotlight(e) for e in features_entries) or '<p class="empty-state">紹介記事はまだありません。</p>',
+                    news=''.join(entry_row(e) for e in news_entries) or '<p class="news-empty">お知らせはまだありません。</p>')
     page(base, project['name'] + ' | ' + SITE['name'], project['description'], body)
 
 
 def articles(project, kind, entries):
-    heading, category_en = ('特集', 'SPOTLIGHT') if kind == 'features' else ('お知らせ', 'NEWS & UPDATES')
+    heading, category_en = ('紹介記事', 'GUIDES') if kind == 'features' else ('お知らせ', 'NEWS & UPDATES')
     base = f'/{project["slug"]}/'
     for entry in entries:
         cover = f'<img class="article-cover" src="{esc(entry["cover"])}" alt="{esc(entry.get("cover_alt", entry["title"]))}" fetchpriority="high">' if entry.get('cover') else ''
@@ -152,7 +152,7 @@ def main():
             notes.extend(entries)
     notes.sort(key=lambda e: (e['date'], e['url']), reverse=True)
     body = template('home', project_count=f'{len(PROJECTS):02d}', project_cards=''.join(project_card(p, i) for i, p in enumerate(PROJECTS, 1)),
-                    latest_notes=''.join(entry_row(e, True) for e in notes[:3]) or '<p class="empty-state">ゲームの特集とお知らせを、こちらに掲載します。</p>')
+                    latest_notes=''.join(entry_row(e, True) for e in notes[:3]) or '<p class="empty-state">紹介記事・お知らせはまだありません。</p>')
     page('/', SITE['name'] + ' | 開発中のゲーム', SITE['description'], body)
     page('/404.html', 'ページが見つかりません | ' + SITE['name'], 'ゲーム一覧からお探しください。', template('404'))
     urls = ''.join(f'<url><loc>{esc(SITE["url"] + route)}</loc></url>' for route in sorted(ROUTES))

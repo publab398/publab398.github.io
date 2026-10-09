@@ -1,8 +1,8 @@
-# Publab398
+# 398
 
-開発中のゲームをプレイヤーに紹介するサイト。公開予定URLは **https://publab398.github.io/** です。
+友達や周りの人に、作っているゲームを紹介するためのサイト。公開URLは **https://publab398.github.io/** です。
 
-Project-CDXのゲーム概要、画像、操作説明、テストビルドへの入口をメインページにまとめ、その下からステージ・武器などの特集と、お知らせの個別ページへ進めます。
+Project-CDXのゲーム概要、画像、操作説明、テスト版のダウンロード先をまとめています。Hardpointをメインモードとして紹介し、FFAはサブモードとして遊び方の説明に載せています。宣伝用のコピーではなく、遊ぶ人が内容と操作を確認できる文言にします。
 
 ## ローカルで確認
 
@@ -42,7 +42,7 @@ git remote add origin https://github.com/publab398/publab398.github.io.git
 
 5. **Actions → Build and deploy Pages** が成功したら、https://publab398.github.io/ を確認します。
 
-以降はmainへのpushで自動公開します。Pull Requestではビルドとリンクの検証だけを行います。GitHub側の実行・公開はまだ検証していません。
+以降はmainへのpushで自動公開します。Pull Requestではビルドとリンクの検証だけを行います。
 
 ## Google Driveのリンクを設定
 
@@ -57,7 +57,7 @@ git remote add origin https://github.com/publab398/publab398.github.io.git
 }
 ```
 
-現状は`drive_url`がnullなので「配布準備中」と表示します。versionとupdatedも未確定ならnullのままで構いません。Driveの`latest`フォルダは**制限付き**にし、許可するテスターを閲覧者として追加して、ダウンロードを許可してください。
+`drive_url`がnullの場合は「配布準備中」と表示します。versionとupdatedも未確定ならnullのままで構いません。Driveの`latest`フォルダは**制限付き**にし、許可するテスターを閲覧者として追加して、ダウンロードを許可してください。
 
 サイトはDrive内を取得しません。ビルド差し替え時に、表示するバージョンや更新日も更新してください。
 
@@ -86,7 +86,23 @@ URLは`/project-cdx/features/任意の名前/`または`/project-cdx/news/任意
 
 毎回のアップデートを記事にする必要はありません。プレイヤーに紹介したいものがあるときに追加する運用です。
 
-ゲーム全体の説明は`content/project-cdx/overview.md`、キャッチコピー・特徴・配布情報は`config/projects.json`、サイト名と公開URLは`config/site.json`を編集します。
+ゲーム全体の説明は`content/project-cdx/overview.md`、概要・特徴・配布情報は`config/projects.json`、サイト名と公開URLは`config/site.json`を編集します。
+
+## 現在のゲームのスクリーンショットに更新
+
+`fps-cdx` に自動撮影スクリプト、画角設定JSON、撮影メニューと手順書を追加しています。手順は隣のリポジトリの `scripts/capture-site-screenshots.md` を参照してください。描画できるUnity環境では `bash scripts/capture-site-screenshots.sh scripts/site-shots-junction.json` でHardpointを起動して撮影でき、画像を確認してJSONの位置・向き・画角を調整し、再撮影できます。手動ではEditorのPlay中に **Tools → FPS → Site Screenshots** から撮影でき、Junctionのプレイ画面は **F12** でも保存できます。
+
+撮影した4枚を取り込むには、このリポジトリで次を実行します。
+
+```bash
+python3 scripts/import-screenshots.py ../fps-cdx/validation-logs/site-screenshots
+python scripts/build.py
+python scripts/check.py
+```
+
+1枚だけ更新する場合は `--shot gameplay`（または `cover`、`overview`、`starlight`）を指定します。取り込み前に画像を確認してください。取り込みツールはPNGと撮影メタデータの整合性を確認し、画像を`public/assets/`へ、撮影情報を`config/screenshots.json`へ保存します。Play中のEditorから撮影するため、配布ビルドも同じ内容であることを確認してください。
+
+現時点の画像は既存資料から選んだもので、新しい撮影画像への差し替えはまだ行っていません。
 
 ## 公開内容
 

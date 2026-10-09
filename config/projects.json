@@ -2,28 +2,28 @@
   {
     "slug": "project-cdx",
     "name": "Project-CDX",
-    "genre": "ARENA FPS",
+    "genre": "FPS / HARDPOINT",
     "status": "開発中",
     "platform": "Windows",
-    "tagline": "滑り込む。狙う。流れを変える。",
-    "description": "スライディングを軸にした高速な移動、反動を制御する射撃、キルストリークを組み合わせた一人称アリーナFPS。Botとの練習から、友達とのオンライン対戦まで。",
+    "tagline": "拠点を取り合うチーム対戦FPS",
+    "description": "Hardpointがメインの対戦FPSです。時間とともに移動する拠点をチームで取り合います。最大12人のオンライン対戦と、Botとのオフライン対戦に対応しています。",
     "cover": "/assets/project-cdx-junction.png",
     "cover_alt": "Project-CDXのマップJunction 55。転車台の機関車を囲むローポリの街並み。",
     "facts": [
       {"value": "12", "label": "オンライン最大人数"},
-      {"value": "FFA / HP", "label": "個人戦と拠点争奪戦"},
+      {"value": "HP", "label": "Hardpoint / 拠点を取り合うチーム戦"},
       {"value": "Bot", "label": "オフラインでも対戦"}
     ],
     "features": [
-      {"title": "移動を、戦い方に。", "text": "スプリントからスライディング、さらにジャンプへ。移動の勢いを使って射線を抜け、撃ち合う位置を選びます。"},
-      {"title": "自分のロードアウトで。", "text": "武器とアビリティ、2枠のキルストリーク、1枠のUltimateを組み合わせて、得意な戦い方を探します。"},
-      {"title": "ひとりでも、友達とも。", "text": "PRACTICEでBotと対戦。PLAY ONLINEでロビーを作成・参加し、友達と同じビルドで遊べます。"}
+      {"title": "移動とスライディング", "text": "走っているときにしゃがみキーを押すと、スライディングできます。キーは設定から変更できます。"},
+      {"title": "武器・装備の変更", "text": "LOADOUTで武器とアビリティ、2枠のキルストリーク、1枠のUltimateを選べます。"},
+      {"title": "Bot対戦とオンライン対戦", "text": "ひとりで遊ぶときはPRACTICE、友達と遊ぶときはPLAY ONLINEを選びます。オンラインでは全員が同じバージョンを使ってください。"}
     ],
     "build": {
       "drive_url": "https://drive.google.com/drive/folders/1aVFDwvroLlKS9aTu9MAdGhgV0t4odRKE?usp=sharing",
-      "version": null,
+      "version": "v0.4.0",
       "updated": "2026-10-09",
-      "note": "テストビルドの配布を準備しています。リンク公開後も、ダウンロードにはアクセスを許可されたGoogleアカウントが必要です。"
+      "note": "Windows向けの開発ビルドです。ダウンロードには、アクセスを許可されたGoogleアカウントが必要です。"
     }
   }
 ]
