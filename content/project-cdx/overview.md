@@ -12,7 +12,7 @@
 
 友達と遊ぶなら、**PLAY ONLINE**でロビーを作成するか、一覧から参加します。オンライン対戦では、ホストと参加者が**同じバージョンのビルド**を使ってください。
 
-装備を選ぶときは、[8種類の武器の紹介](/project-cdx/features/weapons/)と、[エアストの使い方](/project-cdx/features/airstrike/)も参考にしてください。
+装備を選ぶときは、[8種類の武器の紹介](/project-cdx/features/weapons/)と、[Ultimate紹介: エアストライク](/project-cdx/features/airstrike/)も参考にしてください。
 
 ## 基本操作
 

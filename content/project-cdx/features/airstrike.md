@@ -1,6 +1,7 @@
 +++
-title = "エアスト紹介：Precision Airstrike"
+title = "Ultimate紹介：Precision Airstrike"
 date = "2026-10-10"
+updated = "2026-10-10T01:32:04+09:00"
 summary = "地図上にラインを引いて爆撃を呼ぶUltimateです。装備の選び方から、発動と階の指定まで紹介します。"
 label = "装備紹介"
 cover = "/assets/project-cdx-airstrike-tablet.png"

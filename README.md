@@ -68,12 +68,13 @@ git remote add origin https://github.com/publab398/publab398.github.io.git
 - ステージ・武器などの特集: `examples/feature.md` → `content/project-cdx/features/任意の名前.md`
 - 注目アップデートや配布のお知らせ: `examples/news.md` → `content/project-cdx/news/任意の名前.md`
 
-ファイル名は半角小文字・数字・ハイフンを使います。タイトル・日付・概要は必須です。`draft = true`のままでは公開しません。`draft = false`にすると、Project-CDXページとホームへ自動でリンクを追加します。記事の日付が新しいものから表示します。
+ファイル名は半角小文字・数字・ハイフンを使います。タイトル・日付・概要は必須です。`draft = true`のままでは公開しません。`draft = false`にすると、Project-CDXページとホームへ自動でリンクを追加します。`updated`があれば更新日、なければ公開日の新しい順で表示します。homeは最近の6件を表示します。
 
 ```toml
 +++
 title = "新しいステージを紹介"
 date = "2026-10-09"
+updated = "2026-10-10T01:32:04+09:00"
 summary = "カードと記事冒頭に表示する短い紹介。"
 label = "マップ紹介"
 cover = "/assets/自分の画像.png"
@@ -84,11 +85,25 @@ draft = false
 
 URLは`/project-cdx/features/任意の名前/`または`/project-cdx/news/任意の名前/`になります。画像なしの記事ではcoverとcover_altを省略できます。見出し、リンク、画像、リスト、表、コードブロックを使えます。HTMLは無効です。
 
+既存の記事を更新するときは、`date`を公開日のまま残し、`updated`を編集日時へ更新します。`updated`は省略可能で、`YYYY-MM-DD`またはタイムゾーン付きの日時を指定できます。同日の更新順も反映したいときは日時を使います。日付のみの指定は日本時間の午前0時として扱います（`config/site.json`の`timezone`で変更可能）。記事とhomeには更新日を表示します。
+
+武器記事は`gallery = "weapons"`と`[[weapons]]`の名前・種類・画像・短い説明からカードを生成します。画像と説明の重複を避け、画像をクリックすると原寸で確認できます。
+
 毎回のアップデートを記事にする必要はありません。プレイヤーに紹介したいものがあるときに追加する運用です。
 
 ゲーム全体の説明は`content/project-cdx/overview.md`、概要・特徴・配布情報は`config/projects.json`、サイト名と公開URLは`config/site.json`を編集します。
 
 ## 現在のゲームのスクリーンショットに更新
+
+Junctionのカバー・全体図とHardpointのプレイ画面は、サイトのルートから次の1コマンドで撮影・取り込み・再生成できます。Unityの画面表示とライセンス接続が使える通常のターミナルで実行してください。
+
+```bash
+bash scripts/refresh-junction.sh
+```
+
+ゲーム側のプロジェクトを一時コピーして撮影し、成功した画像のみ取り込みます。出力先は最初に表示される`/tmp/publab398-junction-*`です。取り込み後にJunctionとHardpointの記事の更新日時を設定し、ビルド・リンク検証を実行します。2026-10-10の今回の再撮影は画面表示・ライセンス接続エラーで失敗しているため、掲載画像の撮影日時は`config/screenshots.json`を参照してください。
+
+生成する画像・CSSのURLにはファイル内容のハッシュを付けます。同じ名前で差し替えても、公開後は更新した画像が読み込まれます。
 
 `fps-cdx` に自動撮影スクリプト、画角設定JSON、撮影メニューと手順書を追加しています。手順は隣のリポジトリの `scripts/capture-site-screenshots.md` を参照してください。描画できるUnity環境では `bash scripts/capture-site-screenshots.sh scripts/site-shots-junction.json` でHardpointを起動して撮影でき、画像を確認してJSONの位置・向き・画角を調整し、再撮影できます。手動ではEditorのPlay中に **Tools → FPS → Site Screenshots** から撮影でき、Junctionのプレイ画面は **F12** でも保存できます。
 

@@ -52,6 +52,7 @@ h1,h2,h3 { line-height:1.45; }
 .home-notes { margin-top:64px; }
 .entry-row { display:grid; grid-template-columns:135px 1fr auto; align-items:start; gap:26px; padding:26px 0; border-bottom:1px solid var(--line); }
 .entry-date { color:var(--muted); font:12px/1.8 ui-monospace,monospace; padding-top:3px; }
+.entry-updated { display:block; color:var(--accent); font:10px/1.8 var(--font); margin-top:3px; }
 .entry-row h3 { font-size:20px; font-weight:650; margin-bottom:7px; }
 .entry-row p { color:var(--muted); font-size:13px; }
 .entry-kind { color:var(--accent); font-size:11px; padding-top:5px; }
@@ -125,14 +126,25 @@ h1,h2,h3 { line-height:1.45; }
 .prose pre { padding:20px; background:var(--surface); overflow:auto; }
 .prose pre code { padding:0; background:none; }
 .prose blockquote { margin-inline:0; border-left:2px solid var(--accent); padding:10px 20px; background:var(--surface); }
-.weapon-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:22px; }
-.weapon-gallery figure { background:var(--surface); border:1px solid var(--line); }
-.weapon-gallery a { display:block; }
+.article-weapons .article-header { padding-block:24px 30px; max-width:none; }
+.article-weapons .article-summary { margin-top:12px; }
+.article-weapons .article-layout { grid-template-columns:minmax(0,1fr) 190px; gap:36px; padding-top:28px; }
+.article-weapons .prose { line-height:1.85; }
+.weapon-lineup-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.weapon-lineup-heading h2 { font-size:20px; }
+.weapon-intro { margin-top:10px; font-size:13px; }
+.weapon-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:20px; }
+.weapon-gallery figure { background:var(--surface); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+.weapon-gallery a { display:block; position:relative; color:var(--text); }
 .weapon-gallery img { aspect-ratio:16/9; object-fit:contain; }
-.weapon-gallery figcaption { padding:14px 16px; line-height:1.5; }
-.weapon-gallery figcaption strong { display:block; font-size:16px; }
-.weapon-gallery figcaption span { display:block; margin-top:4px; color:var(--muted); font-size:12px; }
-.prose img[src$="project-cdx-airstrike-icon.png"] { width:160px; height:160px; }
+.weapon-zoom { position:absolute; right:10px; bottom:10px; display:grid; place-items:center; width:25px; height:25px; background:#11151acc; border:1px solid #ffffff40; border-radius:3px; font-size:14px; }
+.weapon-gallery a:hover .weapon-zoom { color:var(--accent); border-color:var(--accent); }
+.weapon-gallery figcaption { padding:14px 16px 16px; line-height:1.7; }
+.weapon-heading { display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
+.weapon-heading strong { font:700 19px/1.5 var(--font-brand); letter-spacing:-.02em; }
+.weapon-heading span { color:var(--accent); font-size:10px; }
+.weapon-gallery figcaption p { margin-top:8px; color:var(--muted); font-size:12px; }
+.prose img[src*="/project-cdx-airstrike-icon.png"] { width:160px; height:160px; }
 @media (max-width:600px) { .weapon-gallery { grid-template-columns:1fr; } }
 .reading-aside { border-top:1px solid var(--line); padding-top:25px; }
 .reading-aside h2 { font-size:24px; margin:16px 0; }
@@ -147,7 +159,8 @@ h1,h2,h3 { line-height:1.45; }
 .empty-state p { color:var(--muted); font-size:14px; }
 .empty-state .text-link { display:inline-block; margin-top:18px; }
 .article-header { max-width:830px; padding:40px 0; }
-.article-header time { display:block; color:var(--muted); font:12px/1.8 ui-monospace,monospace; margin:18px 0; }
+.article-dates { display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font:12px/1.8 ui-monospace,monospace; margin:18px 0; }
+.article-updated { color:var(--accent); }
 .article-header h1 { font-size:clamp(28px,3.8vw,44px); letter-spacing:-.025em; line-height:1.55; }
 .article-summary { margin-top:24px; color:var(--muted); font-size:14px; }
 .article-layout { border-top:1px solid var(--line); padding-top:40px; display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:88px; }
@@ -181,6 +194,7 @@ h1,h2,h3 { line-height:1.45; }
   .download-action { text-align:left; }
   .button.disabled { display:inline-flex; min-width:190px; }
   .project-reading,.article-layout { grid-template-columns:1fr; gap:44px; }
+  .article-weapons .article-layout { grid-template-columns:1fr; gap:32px; }
   .game-gallery,.spotlight-grid { grid-template-columns:1fr; }
   .reading-aside { padding-top:26px; }
   .article-aside { border-top:1px solid var(--line); padding-top:26px; }

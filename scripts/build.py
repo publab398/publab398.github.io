@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the public site from explicit assets, JSON configuration and Markdown."""
 import datetime as dt
+import hashlib
 import html
 import json
 from pathlib import Path
@@ -9,15 +10,26 @@ import shutil
 from string import Template
 import tomllib
 from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo
 
 from markdown_it import MarkdownIt
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 SITE = json.loads((ROOT / "config/site.json").read_text(encoding="utf-8"))
+SITE_ZONE = ZoneInfo(SITE.get('timezone', 'Asia/Tokyo'))
 PROJECTS = json.loads((ROOT / "config/projects.json").read_text(encoding="utf-8"))
 MD = MarkdownIt("commonmark", {"html": False}).enable("table")
 ROUTES = []
+
+
+def asset_url(match):
+    path = match.group(2)
+    asset = ROOT / 'public' / path.lstrip('/')
+    if not asset.is_file():
+        return match.group(0)
+    digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+    return f'{match.group(1)}{path}?v={digest}{match.group(3)}'
 
 
 def esc(value):
@@ -50,6 +62,7 @@ def page(route, title, description, body):
     output = template("base", title=esc(title), description=esc(description), canonical=canonical,
                       body=body, home_current=' aria-current="page"' if route == '/' else '',
                       project_current=' aria-current="page"' if route == '/project-cdx/' else '')
+    output = re.sub(r'(\b(?:src|href)=")(/assets/[^"?]+)(")', asset_url, output)
     destination = OUT / (route.lstrip('/') + 'index.html' if route.endswith('/') else route.lstrip('/'))
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(output, encoding="utf-8")
@@ -70,20 +83,35 @@ def load_entries(project, kind):
             if not isinstance(metadata.get(key), str) or not metadata[key].strip():
                 raise ValueError(f"{source}: {key} must be a nonempty string")
         date_text(metadata['date'])
+        published = dt.datetime.fromisoformat(metadata['date']).replace(tzinfo=SITE_ZONE)
+        updated = metadata.get('updated')
+        if updated is not None:
+            if not isinstance(updated, str):
+                raise ValueError(f'{source}: updated must be an ISO date or timestamp')
+            modified = dt.datetime.fromisoformat(updated)
+            if modified.date() < published.date():
+                raise ValueError(f'{source}: updated cannot precede date')
+            modified = modified.replace(tzinfo=modified.tzinfo or SITE_ZONE)
+        else:
+            modified = published
         if not isinstance(metadata.get('draft', False), bool):
             raise ValueError(f"{source}: draft must be true or false")
         if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', source.stem):
             raise ValueError(f"{source}: use lowercase letters, digits and hyphens")
         if metadata.get('draft', False):
             continue
-        entries.append({**metadata, 'body': MD.render(sections[2]), 'url': f'/{project["slug"]}/{kind}/{source.stem}/', 'project': project, 'kind': kind})
-    return sorted(entries, key=lambda e: (e['date'], e['url']), reverse=True)
+        entries.append({**metadata, 'sort_date': modified.astimezone(dt.timezone.utc), 'body': MD.render(sections[2]), 'url': f'/{project["slug"]}/{kind}/{source.stem}/', 'project': project, 'kind': kind})
+    return sorted(entries, key=lambda e: (e['sort_date'], e['url']), reverse=True)
 
 
 def entry_row(entry, show_project=False):
     category = entry.get('label', '紹介' if entry['kind'] == 'features' else 'お知らせ')
     label = esc(entry['project']['name']) + ' / ' + esc(category) if show_project else esc(category)
-    return f'''<a class="entry-row" href="{entry['url']}"><time class="entry-date" datetime="{esc(entry['date'])}">{date_text(entry['date'])}</time><div><h3>{esc(entry['title'])}</h3><p>{esc(entry['summary'])}</p></div><span class="entry-kind">{label}</span></a>'''
+    value = entry.get('updated', entry['date'])
+    display = date_text(value[:10])
+    if entry.get('updated'):
+        display += ' <span class="entry-updated">更新</span>'
+    return f'''<a class="entry-row" href="{entry['url']}"><time class="entry-date" datetime="{esc(value)}">{display}</time><div><h3>{esc(entry['title'])}</h3><p>{esc(entry['summary'])}</p></div><span class="entry-kind">{label}</span></a>'''
 
 
 def project_card(project, index):
@@ -127,8 +155,13 @@ def articles(project, kind, entries):
     heading, category_en = ('紹介記事', 'GUIDES') if kind == 'features' else ('お知らせ', 'NEWS & UPDATES')
     base = f'/{project["slug"]}/'
     for entry in entries:
-        cover = f'<img class="article-cover" src="{esc(entry["cover"])}" alt="{esc(entry.get("cover_alt", entry["title"]))}" fetchpriority="high">' if entry.get('cover') else ''
-        body = template('article', name=esc(project['name']), category_en=esc(category_en), heading=esc(entry['title']), iso_date=esc(entry['date']), display_date=date_text(entry['date']),
+        is_weapons = entry.get('gallery') == 'weapons'
+        cover = f'<img class="article-cover" src="{esc(entry["cover"])}" alt="{esc(entry.get("cover_alt", entry["title"]))}" fetchpriority="high">' if entry.get('cover') and not is_weapons else ''
+        dates = f'<time datetime="{esc(entry["date"])}">{date_text(entry["date"])}</time>'
+        if entry.get('updated'):
+            dates += f'<span class="article-updated">更新 <time datetime="{esc(entry["updated"])}">{date_text(entry["updated"][:10])}</time></span>'
+        body = template('article', name=esc(project['name']), category_en=esc(category_en), heading=esc(entry['title']),
+                        dates=dates, article_class=' article-weapons' if is_weapons else '',
                         summary=esc(entry['summary']), content=entry['body'], gallery=guide_gallery(entry), category=heading, list_url=base+'#'+kind, project_url=base, cover=cover,
                         breadcrumbs=breadcrumbs([('ゲーム一覧', '/'), (project['name'], base), (heading, base+'#'+kind), (entry['title'], None)]))
         page(entry['url'], entry['title'] + ' | ' + project['name'] + ' | ' + SITE['name'], entry['summary'], body)
@@ -136,17 +169,16 @@ def articles(project, kind, entries):
 
 def guide_gallery(entry):
     if entry.get('gallery') == 'weapons':
-        items = [('ar', 'ARC-16', 'アサルトライフル'), ('smg', 'Venom', 'サブマシンガン'),
-                 ('raven-k27', 'Raven K27', 'バトルライフル'), ('lmg', 'LG11', 'ライトマシンガン'),
-                 ('p08c', 'P08C', 'ピストルカービン'), ('sniper', 'AWX', 'スナイパーライフル'),
-                 ('drilling', 'Drilling', 'ショットガン'), ('pulse-driver', 'Pulse Driver', 'テック武器')]
         figures = []
-        for slug, name, weapon_type in items:
+        for item in entry['weapons']:
+            slug, name, weapon_type = item['image'], item['name'], item['type']
+            if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', slug):
+                raise ValueError(f'Invalid weapon image slug: {slug}')
             src = '/assets/project-cdx-weapon-' + slug + '.png'
             if not (ROOT / 'public' / src.lstrip('/')).is_file():
-                continue
-            figures.append(f'<figure><a href="{src}" aria-label="{esc(name)}の画像を拡大"><img src="{src}" alt="{esc(name)}を構えたプレイ画面。{esc(weapon_type)}。" width="1920" height="1080" loading="lazy"></a><figcaption><strong>{esc(name)}</strong><span>{esc(weapon_type)}</span></figcaption></figure>')
-        return '<section aria-label="武器の画像"><h2>武器の見た目</h2><div class="weapon-gallery">' + ''.join(figures) + '</div></section>'
+                raise ValueError(f'Missing weapon image: {src}')
+            figures.append(f'<figure><a href="{src}" aria-label="{esc(name)}の画像を拡大"><img src="{src}" alt="{esc(name)}を構えたプレイ画面。{esc(weapon_type)}。" width="1920" height="1080" loading="lazy"><span class="weapon-zoom" aria-hidden="true">↗</span></a><figcaption><div class="weapon-heading"><strong>{esc(name)}</strong><span>{esc(weapon_type)}</span></div><p>{esc(item["description"])}</p></figcaption></figure>')
+        return '<section class="weapon-lineup" aria-labelledby="weapon-lineup-title"><div class="weapon-lineup-heading"><h2 id="weapon-lineup-title">選べる武器</h2><span class="eyebrow">' + f'{len(figures):02d} MAIN WEAPONS' + '</span></div><p class="weapon-intro">メイン武器は1つ。<strong>LOADOUT → WEAPONS</strong>で選択し、試合中の変更は次のリスポーンから反映されます。</p><div class="weapon-gallery">' + ''.join(figures) + '</div></section>'
     return ''
 
 
@@ -166,9 +198,9 @@ def main():
         for kind, entries in collections.items():
             articles(project, kind, entries)
             notes.extend(entries)
-    notes.sort(key=lambda e: (e['date'], e['url']), reverse=True)
+    notes.sort(key=lambda e: (e['sort_date'], e['url']), reverse=True)
     body = template('home', project_count=f'{len(PROJECTS):02d}', project_cards=''.join(project_card(p, i) for i, p in enumerate(PROJECTS, 1)),
-                    latest_notes=''.join(entry_row(e, True) for e in notes[:3]) or '<p class="empty-state">紹介記事・お知らせはまだありません。</p>')
+                    latest_notes=''.join(entry_row(e, True) for e in notes[:6]) or '<p class="empty-state">紹介記事・お知らせはまだありません。</p>')
     page('/', SITE['name'] + ' | 開発中のゲーム', SITE['description'], body)
     page('/404.html', 'ページが見つかりません | ' + SITE['name'], 'ゲーム一覧からお探しください。', template('404'))
     urls = ''.join(f'<url><loc>{esc(SITE["url"] + route)}</loc></url>' for route in sorted(ROUTES))
