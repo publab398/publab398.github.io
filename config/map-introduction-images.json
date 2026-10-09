@@ -33,5 +33,12 @@
     "sha256": "e4e9f674c28cffab372600ef9b002472e5aba7d8bb36e4f884345f60b87eab16",
     "importedDate": "2026-10-10",
     "note": "Existing game thumbnail or documentation image; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-tidal-weave-basin.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "docs/stages/neo-civic/tidal-weave-basin.png",
+    "sha256": "3ecb64927ff83266eaeba0eda032ac9c94a0be44369afbb86e64c8b6974cf8f7",
+    "importedDate": "2026-10-10",
+    "note": "Existing software geometry preview from game documentation; not a Unity gameplay capture. Capture date and release build correspondence unverified."
   }
 }
