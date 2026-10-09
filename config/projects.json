@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "project-cdx",
+    "name": "Project-CDX",
+    "genre": "ARENA FPS",
+    "status": "開発中",
+    "platform": "Windows",
+    "tagline": "滑り込む。狙う。流れを変える。",
+    "description": "スライディングを軸にした高速な移動、反動を制御する射撃、キルストリークを組み合わせた一人称アリーナFPS。Botとの練習から、友達とのオンライン対戦まで。",
+    "cover": "/assets/project-cdx-junction.png",
+    "cover_alt": "Project-CDXのマップJunction 55。転車台の機関車を囲むローポリの街並み。",
+    "facts": [
+      {"value": "12", "label": "オンライン最大人数"},
+      {"value": "FFA / HP", "label": "個人戦と拠点争奪戦"},
+      {"value": "Bot", "label": "オフラインでも対戦"}
+    ],
+    "features": [
+      {"title": "移動を、戦い方に。", "text": "スプリントからスライディング、さらにジャンプへ。移動の勢いを使って射線を抜け、撃ち合う位置を選びます。"},
+      {"title": "自分のロードアウトで。", "text": "武器とアビリティ、2枠のキルストリーク、1枠のUltimateを組み合わせて、得意な戦い方を探します。"},
+      {"title": "ひとりでも、友達とも。", "text": "PRACTICEでBotと対戦。PLAY ONLINEでロビーを作成・参加し、友達と同じビルドで遊べます。"}
+    ],
+    "build": {
+      "drive_url": null,
+      "version": null,
+      "updated": null,
+      "note": "テストビルドの配布を準備しています。リンク公開後も、ダウンロードにはアクセスを許可されたGoogleアカウントが必要です。"
+    }
+  }
+]
