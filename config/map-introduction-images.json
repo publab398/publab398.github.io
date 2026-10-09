@@ -1,0 +1,37 @@
+{
+  "project-cdx-tidal-weave.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "FPSPrototype/Assets/Resources/UI/Maps/tidal-weave.png",
+    "sha256": "2f6b24a515af2daa8cbc51635993455640dd34764da4a44d0781413c2d924979",
+    "importedDate": "2026-10-10",
+    "note": "Existing game thumbnail or documentation image; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-neo-shirayuki-onsen.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "FPSPrototype/Assets/Resources/UI/Maps/shirayuki-onsen-remastered.png",
+    "sha256": "4dee45b256c76acbac454abd57a3a64a1de16a33cb3ffd9e67d83a8712311de1",
+    "importedDate": "2026-10-10",
+    "note": "Existing game thumbnail or documentation image; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-neo-shirayuki-onsen-yubatake.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "docs/images/shirayuki-onsen/remastered-v2-yubatake.png",
+    "sha256": "2c25c403d26a32c6df8008476fd2bc0db7591f4a932408758db186b4a93374fa",
+    "importedDate": "2026-10-10",
+    "note": "Existing game thumbnail or documentation image; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-skyline-sky-deck.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "docs/stages/skyline-sky-deck/intro.png",
+    "sha256": "4ce172e7afc3ddc66628fd1c9dd11f3f49ec100509c1178117e7d23f51134d00",
+    "importedDate": "2026-10-10",
+    "note": "Existing game thumbnail or documentation image; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-skyline-sky-deck-plaza.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "docs/stages/skyline-sky-deck/plaza-towards-hall.png",
+    "sha256": "e4e9f674c28cffab372600ef9b002472e5aba7d8bb36e4f884345f60b87eab16",
+    "importedDate": "2026-10-10",
+    "note": "Existing game thumbnail or documentation image; not a new site capture. Capture date and release build correspondence unverified."
+  }
+}

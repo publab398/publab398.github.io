@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Precision Airstrikeのライン指定</title>
+  <desc id="desc">開始点をクリックし、マウスで方向を決め、右クリックで発動する操作イメージ。</desc>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#29353e" stroke-width="1"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#e99372"/></marker>
+  </defs>
+  <rect width="1200" height="675" fill="#151c23"/>
+  <g font-family="sans-serif">
+    <text x="60" y="77" fill="#e9edf0" font-size="38" font-weight="700">Precision Airstrike</text>
+    <text x="60" y="116" fill="#a2aeb8" font-size="20">地図にラインを引いて、爆撃を呼ぶ</text>
+    <rect x="60" y="155" width="1080" height="385" rx="8" fill="#111820" stroke="#35414a"/>
+    <rect x="60" y="155" width="1080" height="385" rx="8" fill="url(#grid)"/>
+    <g fill="#25323e" stroke="#3c4a55" stroke-width="2">
+      <rect x="105" y="192" width="186" height="118"/><rect x="340" y="200" width="138" height="88"/>
+      <rect x="715" y="206" width="180" height="108"/><rect x="960" y="210" width="130" height="94"/>
+      <rect x="142" y="388" width="180" height="113"/><rect x="396" y="436" width="150" height="66"/>
+      <rect x="796" y="405" width="250" height="90"/>
+    </g>
+    <path d="M292 409L908 290" fill="none" stroke="#e99372" stroke-width="54" stroke-linecap="round" opacity=".14"/>
+    <path d="M292 409L908 290" fill="none" stroke="#e99372" stroke-width="4" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+    <g fill="#e99372"><circle cx="380" cy="392" r="6"/><circle cx="468" cy="375" r="6"/><circle cx="556" cy="358" r="6"/><circle cx="644" cy="341" r="6"/><circle cx="732" cy="324" r="6"/><circle cx="820" cy="307" r="6"/></g>
+    <circle cx="292" cy="409" r="14" fill="#151c23" stroke="#e99372" stroke-width="4"/>
+    <text x="225" y="367" fill="#e9edf0" font-size="22">開始点</text>
+    <text x="906" y="351" fill="#e9edf0" font-size="22">方向</text>
+    <text x="1088" y="521" text-anchor="end" fill="#a2aeb8" font-size="16">操作イメージ</text>
+    <text x="60" y="597" fill="#e9edf0" font-size="22">① 左クリックで開始点</text>
+    <text x="440" y="597" fill="#e9edf0" font-size="22">② マウスで方向</text>
+    <text x="820" y="597" fill="#e99372" font-size="22">③ 右クリックで発動</text>
+  </g>
+</svg>

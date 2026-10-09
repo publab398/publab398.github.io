@@ -129,9 +129,25 @@ def articles(project, kind, entries):
     for entry in entries:
         cover = f'<img class="article-cover" src="{esc(entry["cover"])}" alt="{esc(entry.get("cover_alt", entry["title"]))}" fetchpriority="high">' if entry.get('cover') else ''
         body = template('article', name=esc(project['name']), category_en=esc(category_en), heading=esc(entry['title']), iso_date=esc(entry['date']), display_date=date_text(entry['date']),
-                        summary=esc(entry['summary']), content=entry['body'], category=heading, list_url=base+'#'+kind, project_url=base, cover=cover,
+                        summary=esc(entry['summary']), content=entry['body'], gallery=guide_gallery(entry), category=heading, list_url=base+'#'+kind, project_url=base, cover=cover,
                         breadcrumbs=breadcrumbs([('ゲーム一覧', '/'), (project['name'], base), (heading, base+'#'+kind), (entry['title'], None)]))
         page(entry['url'], entry['title'] + ' | ' + project['name'] + ' | ' + SITE['name'], entry['summary'], body)
+
+
+def guide_gallery(entry):
+    if entry.get('gallery') == 'weapons':
+        items = [('ar', 'ARC-16', 'アサルトライフル'), ('smg', 'Venom', 'サブマシンガン'),
+                 ('raven-k27', 'Raven K27', 'バトルライフル'), ('lmg', 'LG11', 'ライトマシンガン'),
+                 ('p08c', 'P08C', 'ピストルカービン'), ('sniper', 'AWX', 'スナイパーライフル'),
+                 ('drilling', 'Drilling', 'ショットガン'), ('pulse-driver', 'Pulse Driver', 'テック武器')]
+        figures = []
+        for slug, name, weapon_type in items:
+            src = '/assets/project-cdx-weapon-' + slug + '.png'
+            if not (ROOT / 'public' / src.lstrip('/')).is_file():
+                continue
+            figures.append(f'<figure><a href="{src}" aria-label="{esc(name)}の画像を拡大"><img src="{src}" alt="{esc(name)}を構えたプレイ画面。{esc(weapon_type)}。" width="1920" height="1080" loading="lazy"></a><figcaption><strong>{esc(name)}</strong><span>{esc(weapon_type)}</span></figcaption></figure>')
+        return '<section aria-label="武器の画像"><h2>武器の見た目</h2><div class="weapon-gallery">' + ''.join(figures) + '</div></section>'
+    return ''
 
 
 def main():

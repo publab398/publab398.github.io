@@ -102,10 +102,22 @@ python scripts/check.py
 
 1枚だけ更新する場合は `--shot gameplay`（または `cover`、`overview`、`starlight`）を指定します。取り込み前に画像を確認してください。取り込みツールはPNGと撮影メタデータの整合性を確認し、画像を`public/assets/`へ、撮影情報を`config/screenshots.json`へ保存します。Play中のEditorから撮影するため、配布ビルドも同じ内容であることを確認してください。
 
-現時点の画像は既存資料から選んだもので、新しい撮影画像への差し替えはまだ行っていません。
+Junctionのカバー、全体図、Hardpointのプレイ画面とStarlight Parkの全体図は、2026-10-10に現在のEditorで撮影した画像へ更新済みです。撮影メタデータの`version`はEditorの設定値で、配布ビルドのバージョンとは別です。
+
+武器8種類とエアストのタブレット画面は、`fps-cdx`側で以下の設定からまとめて撮影できます。説明用にプレイヤーとBotを静止させ、エアストのチャージを設定したオフライン撮影です。通常の試合で獲得したチャージを撮るものではありません。
+
+```bash
+# fps-cdxで実行
+bash scripts/capture-site-screenshots.sh scripts/site-shots-guides.json validation-logs/site-guides
+
+# このサイトのリポジトリで画像を確認してから実行
+python3 scripts/import-screenshots.py ../fps-cdx/validation-logs/site-guides --group guides
+```
+
+武器8種類のプレイ画面とエアストのタブレット画面は、2026-10-10に撮影した画像へ更新済みです。撮影情報は`config/screenshots.json`、画像と選択アイコンの出典は`config/guide-image-sources.json`に記録しています。選択アイコンはゲーム内の素材です。
 
 ## 公開内容
 
-ゲームのソースコード、Unityプロジェクト、開発Git履歴、ビルド、テスターのメールアドレスは含めません。サイト用の画像4点と、プレイヤー向けに書き直した紹介文だけを使っています。生成時に公開対象となるのは`public/`のファイルと、テンプレート・設定・公開記事から生成したページです。
+ゲームのソースコード、Unityプロジェクト、開発Git履歴、ビルド、テスターのメールアドレスは含めません。サイト用の画像と、プレイヤー向けに書き直した紹介文だけを使っています。生成時に公開対象となるのは`public/`のファイルと、テンプレート・設定・公開記事から生成したページです。
 
-画像はProject-CDXの既存資料から選んでいます。画像と機能説明は開発時点の内容なので、配布ビルドに合わせて確認・更新してください。
+画像と機能説明は開発時点の内容なので、配布ビルドに合わせて確認・更新してください。

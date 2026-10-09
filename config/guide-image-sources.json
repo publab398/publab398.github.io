@@ -1,0 +1,90 @@
+{
+  "project-cdx-weapon-ar.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-ar.png",
+    "sha256": "d6761297cabea8985ff8b15d759e3dcd1185644581ffd2d6ba271050bc228495",
+    "capturedUtc": "2026-10-09T16:16:07.1194620Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-weapon-smg.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-smg.png",
+    "sha256": "00abc2750e2a879887398ae560302175bb5bcb1475af1c2a0ca97e874b76bad0",
+    "capturedUtc": "2026-10-09T16:16:08.2127030Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-weapon-raven-k27.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-raven-k27.png",
+    "sha256": "c7e10d5a21d339b62ea00dffbc3e3c17c3e8d3a1cd23acac391dafd0151e6d51",
+    "capturedUtc": "2026-10-09T16:16:09.2769710Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-weapon-lmg.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-lmg.png",
+    "sha256": "023d190500e054b2735d2ee6034149779084b7b8a7af3be1b18069ade4f33b61",
+    "capturedUtc": "2026-10-09T16:16:10.3471740Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-weapon-p08c.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-p08c.png",
+    "sha256": "988361bfb4a308910fabd5be4a7d514f22a5df6fcf2a999cb68e8684f3a25a1d",
+    "capturedUtc": "2026-10-09T16:16:11.4111120Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-weapon-sniper.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-sniper.png",
+    "sha256": "aa4b78073a43954808960391e31e30e1dae527f86861f09fcd539a51c98bbaa6",
+    "capturedUtc": "2026-10-09T16:16:12.4743760Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-airstrike-icon.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "FPSPrototype/Assets/Resources/UI/Killstreaks/precision_airstrike.png",
+    "sha256": "cc9b097d9360dc309f26449428e22e2e2f4e0f83837614d70276b97db456a569",
+    "importedDate": "2026-10-10",
+    "note": "In-game selection icon, not a gameplay screenshot."
+  },
+  "project-cdx-weapon-drilling.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-drilling.png",
+    "sha256": "bbbda976cfe438a418df142e605df3dbf09d6045117775f5244006c2ac87bec0",
+    "capturedUtc": "2026-10-09T16:16:13.5467270Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-weapon-pulse-driver.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-weapon-pulse-driver.png",
+    "sha256": "b0537abe71eb5a1c9fba60e8a9f869b995f7c0c1eae48fd440d8cdfea391037b",
+    "capturedUtc": "2026-10-09T16:16:14.6181660Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  },
+  "project-cdx-airstrike-tablet.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/site-guides/project-cdx-airstrike-tablet.png",
+    "sha256": "8a738f4f755ebbb82d41ecefa007ba8d1ecd16d85d0fb5e3ecd497b870d43612",
+    "capturedUtc": "2026-10-09T16:16:15.6855170Z",
+    "importedDate": "2026-10-10",
+    "captureMetadata": "config/screenshots.json",
+    "stagedForGuide": true
+  }
+}

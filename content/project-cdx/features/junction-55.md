@@ -18,9 +18,9 @@ draft = false
 
 ## プレイ画面
 
-路地では建物の角で視界が遮られます。スライディングも使いながら移動できます。
+Junction 55でHardpointをプレイしている画面です。画面上部にチームのスコアと拠点の残り時間、中央に拠点の位置が表示されます。
 
-![Junction 55の路地での一人称視点。建物の間で武器を構えている。](/assets/project-cdx-gameplay.png)
+![Junction 55のHardpointプレイ画面。転車台の機関車に向かって武器を構え、拠点とチームのスコアが表示されている。](/assets/project-cdx-gameplay.png)
 
 ## 対応モード
 

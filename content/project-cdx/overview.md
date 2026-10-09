@@ -4,11 +4,15 @@
 
 サブモードとして、全員が敵になる個人戦の**Free For All**（FFA）もあります。
 
+得点の入り方や画面の見方は、[Hardpointのルール紹介](/project-cdx/features/rules/)にまとめています。
+
 ## 対戦の始め方
 
 ひとりで試すなら、メインメニューの**PRACTICE**からモードを選び、ロビーの**AUTO FILL**でBotを追加して**START MATCH**。武器やアビリティは**LOADOUT**から変更できます。
 
 友達と遊ぶなら、**PLAY ONLINE**でロビーを作成するか、一覧から参加します。オンライン対戦では、ホストと参加者が**同じバージョンのビルド**を使ってください。
+
+装備を選ぶときは、[8種類の武器の紹介](/project-cdx/features/weapons/)と、[エアストの使い方](/project-cdx/features/airstrike/)も参考にしてください。
 
 ## 基本操作
 

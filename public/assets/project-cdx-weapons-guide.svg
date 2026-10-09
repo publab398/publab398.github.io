@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Project-CDXの8種類のメイン武器</title>
+<desc id="desc">ARC-16、Venom、Raven K27、LG11、P08C、AWX、Drilling、Pulse Driver。</desc>
+<rect width="1200" height="675" fill="#151c23"/>
+<g font-family="sans-serif">
+<text x="60" y="77" fill="#e9edf0" font-size="38" font-weight="700">いろんな武器を使ってみよう</text>
+<text x="60" y="116" fill="#a2aeb8" font-size="20">8種類のメイン武器 · LOADOUTで変更</text>
+<rect x="60" y="154" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="60" y="171" width="3" height="67" fill="#e99372"/>
+<text x="85" y="198" fill="#e9edf0" font-size="27" font-weight="700">ARC-16</text>
+<text x="85" y="229" fill="#a2aeb8" font-size="15">ASSAULT RIFLE</text>
+<rect x="610" y="154" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="610" y="171" width="3" height="67" fill="#e99372"/>
+<text x="635" y="198" fill="#e9edf0" font-size="27" font-weight="700">Venom</text>
+<text x="635" y="229" fill="#a2aeb8" font-size="15">SUBMACHINE GUN</text>
+<rect x="60" y="275" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="60" y="292" width="3" height="67" fill="#e99372"/>
+<text x="85" y="319" fill="#e9edf0" font-size="27" font-weight="700">Raven K27</text>
+<text x="85" y="350" fill="#a2aeb8" font-size="15">BATTLE RIFLE</text>
+<rect x="610" y="275" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="610" y="292" width="3" height="67" fill="#e99372"/>
+<text x="635" y="319" fill="#e9edf0" font-size="27" font-weight="700">LG11</text>
+<text x="635" y="350" fill="#a2aeb8" font-size="15">LIGHT MACHINE GUN</text>
+<rect x="60" y="396" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="60" y="413" width="3" height="67" fill="#e99372"/>
+<text x="85" y="440" fill="#e9edf0" font-size="27" font-weight="700">P08C</text>
+<text x="85" y="471" fill="#a2aeb8" font-size="15">PISTOL CARBINE</text>
+<rect x="610" y="396" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="610" y="413" width="3" height="67" fill="#e99372"/>
+<text x="635" y="440" fill="#e9edf0" font-size="27" font-weight="700">AWX</text>
+<text x="635" y="471" fill="#a2aeb8" font-size="15">SNIPER RIFLE</text>
+<rect x="60" y="517" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="60" y="534" width="3" height="67" fill="#e99372"/>
+<text x="85" y="561" fill="#e9edf0" font-size="27" font-weight="700">Drilling</text>
+<text x="85" y="592" fill="#a2aeb8" font-size="15">SHOTGUN</text>
+<rect x="610" y="517" width="530" height="101" rx="6" fill="#1d2730" stroke="#35414a"/>
+<rect x="610" y="534" width="3" height="67" fill="#e99372"/>
+<text x="635" y="561" fill="#e9edf0" font-size="27" font-weight="700">Pulse Driver</text>
+<text x="635" y="592" fill="#a2aeb8" font-size="15">TECH WEAPON</text>
+</g>
+</svg>

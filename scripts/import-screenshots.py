@@ -16,6 +16,13 @@ SHOTS = {
     'overview': ('project-cdx-junction-overview', 'junction-remastered', 'scene-view', 16 / 9),
     'starlight': ('project-cdx-starlight-park', 'starlight-park', 'scene-view', 16 / 9),
 }
+DEFAULT_SHOTS = tuple(SHOTS)
+WEAPONS = ('ar', 'smg', 'raven_k27', 'lmg', 'p08c', 'sniper', 'drilling', 'pulse_driver')
+for weapon in WEAPONS:
+    SHOTS['weapon-' + weapon.replace('_', '-')] = (
+        'project-cdx-weapon-' + weapon.replace('_', '-'), 'junction-remastered', 'game-view', 16 / 9)
+SHOTS['airstrike'] = ('project-cdx-airstrike-tablet', 'junction-remastered', 'game-view', 16 / 9)
+GUIDE_SHOTS = tuple('weapon-' + weapon.replace('_', '-') for weapon in WEAPONS) + ('airstrike',)
 
 
 def png_size(data):
@@ -62,6 +69,11 @@ def read_capture(directory, shot):
         raise ValueError(f'{name}: dimensions do not match metadata')
     if info.get('sha256') != hashlib.sha256(data).hexdigest():
         raise ValueError(f'{name}: image does not match metadata hash')
+    if shot in GUIDE_SHOTS:
+        expected_weapon = shot.removeprefix('weapon-').replace('-', '_') if shot != 'airstrike' else 'ar'
+        expected_view = 'airstrike-tablet' if shot == 'airstrike' else 'gameplay'
+        if (info.get('weaponId'), info.get('guideView')) != (expected_weapon, expected_view):
+            raise ValueError(f'{name}: weapon or guide view does not match this image slot')
     if not isinstance(info.get('version'), str) or not info['version'].strip():
         raise ValueError(f'{name}: missing version')
     if not isinstance(info.get('frame'), int) or info['frame'] < 2:
@@ -86,8 +98,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', type=Path, help='fps-cdx/validation-logs/site-screenshots')
     parser.add_argument('--shot', action='append', choices=SHOTS, help='Import only this slot; may be repeated.')
+    parser.add_argument('--group', choices=('guides',), help='Import all eight weapon views and the airstrike tablet.')
     args = parser.parse_args()
-    selected = list(dict.fromkeys(args.shot or SHOTS))
+    selected = list(dict.fromkeys((list(GUIDE_SHOTS) if args.group else []) +
+                                 (args.shot or ([] if args.group else list(DEFAULT_SHOTS)))))
     # Read and validate every image before replacing any site files.
     captures = [read_capture(args.directory, shot) for shot in selected]
     if len({info['version'] for _, _, info in captures}) != 1:
@@ -99,7 +113,7 @@ def main():
         manifest[name] = info
     write_atomic(manifest_path, (json.dumps(manifest, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
     for name, _, info in captures:
-        print(f'Imported {name}.png: {info["width"]}x{info["height"]}, version {info["version"]}')
+        print(f'Imported {name}.png: {info["width"]}x{info["height"]}, Editor settings version {info["version"]}')
 
 
 if __name__ == '__main__':
