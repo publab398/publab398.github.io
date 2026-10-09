@@ -11,7 +11,7 @@
     "cover_alt": "Project-CDXのマップJunction 55。転車台の機関車を囲むローポリの街並み。",
     "facts": [
       {"value": "12", "label": "オンライン最大人数"},
-      {"value": "HP", "label": "Hardpoint / 拠点を取り合うチーム戦"},
+      {"value": "Hardpoint", "label": "拠点を取り合うチーム戦"},
       {"value": "Bot", "label": "オフラインでも対戦"}
     ],
     "features": [
