@@ -93,5 +93,3 @@ URLは`/project-cdx/features/任意の名前/`または`/project-cdx/news/任意
 ゲームのソースコード、Unityプロジェクト、開発Git履歴、ビルド、テスターのメールアドレスは含めません。サイト用の画像4点と、プレイヤー向けに書き直した紹介文だけを使っています。生成時に公開対象となるのは`public/`のファイルと、テンプレート・設定・公開記事から生成したページです。
 
 画像はProject-CDXの既存資料から選んでいます。画像と機能説明は開発時点の内容なので、配布ビルドに合わせて確認・更新してください。
-
-デザイン・情報構成の参考: [VALORANT](https://playvalorant.com/ja-jp/)、[Apex Legends](https://www.ea.com/ja/games/apex-legends/apex-legends)。大きなゲーム画像、プレイへの入口、フィーチャ紹介、ニュースへの導線を参考にしています。
