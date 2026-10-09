@@ -20,9 +20,9 @@
       {"title": "ひとりでも、友達とも。", "text": "PRACTICEでBotと対戦。PLAY ONLINEでロビーを作成・参加し、友達と同じビルドで遊べます。"}
     ],
     "build": {
-      "drive_url": null,
+      "drive_url": "https://drive.google.com/drive/folders/1aVFDwvroLlKS9aTu9MAdGhgV0t4odRKE?usp=sharing",
       "version": null,
-      "updated": null,
+      "updated": "2026-10-09",
       "note": "テストビルドの配布を準備しています。リンク公開後も、ダウンロードにはアクセスを許可されたGoogleアカウントが必要です。"
     }
   }
