@@ -1,6 +1,6 @@
-# 398
+# Playground
 
-友達や周りの人に、作っているゲームを紹介するためのサイト。公開URLは **https://publab398.github.io/** です。
+ゲーム紹介サイト。公開URLは **https://publab398.github.io/** です。
 
 Project-CDXのゲーム概要、画像、操作説明、テスト版のダウンロード先をまとめています。Hardpointをメインモードとして紹介し、FFAはサブモードとして遊び方の説明に載せています。宣伝用のコピーではなく、遊ぶ人が内容と操作を確認できる文言にします。
 
@@ -92,44 +92,6 @@ URLは`/project-cdx/features/任意の名前/`または`/project-cdx/news/任意
 毎回のアップデートを記事にする必要はありません。プレイヤーに紹介したいものがあるときに追加する運用です。
 
 ゲーム全体の説明は`content/project-cdx/overview.md`、概要・特徴・配布情報は`config/projects.json`、サイト名と公開URLは`config/site.json`を編集します。
-
-## 現在のゲームのスクリーンショットに更新
-
-Junctionのカバー・全体図とHardpointのプレイ画面は、サイトのルートから次の1コマンドで撮影・取り込み・再生成できます。Unityの画面表示とライセンス接続が使える通常のターミナルで実行してください。
-
-```bash
-bash scripts/refresh-junction.sh
-```
-
-ゲーム側のプロジェクトを一時コピーして撮影し、成功した画像のみ取り込みます。出力先は最初に表示される`/tmp/publab398-junction-*`です。取り込み後にJunctionとHardpointの記事の更新日時を設定し、ビルド・リンク検証を実行します。2026-10-10の今回の再撮影は画面表示・ライセンス接続エラーで失敗しているため、掲載画像の撮影日時は`config/screenshots.json`を参照してください。
-
-生成する画像・CSSのURLにはファイル内容のハッシュを付けます。同じ名前で差し替えても、公開後は更新した画像が読み込まれます。
-
-`fps-cdx` に自動撮影スクリプト、画角設定JSON、撮影メニューと手順書を追加しています。手順は隣のリポジトリの `scripts/capture-site-screenshots.md` を参照してください。描画できるUnity環境では `bash scripts/capture-site-screenshots.sh scripts/site-shots-junction.json` でHardpointを起動して撮影でき、画像を確認してJSONの位置・向き・画角を調整し、再撮影できます。手動ではEditorのPlay中に **Tools → FPS → Site Screenshots** から撮影でき、Junctionのプレイ画面は **F12** でも保存できます。
-
-撮影した4枚を取り込むには、このリポジトリで次を実行します。
-
-```bash
-python3 scripts/import-screenshots.py ../fps-cdx/validation-logs/site-screenshots
-python scripts/build.py
-python scripts/check.py
-```
-
-1枚だけ更新する場合は `--shot gameplay`（または `cover`、`overview`、`starlight`）を指定します。取り込み前に画像を確認してください。取り込みツールはPNGと撮影メタデータの整合性を確認し、画像を`public/assets/`へ、撮影情報を`config/screenshots.json`へ保存します。Play中のEditorから撮影するため、配布ビルドも同じ内容であることを確認してください。
-
-Junctionのカバー、全体図、Hardpointのプレイ画面とStarlight Parkの全体図は、2026-10-10に現在のEditorで撮影した画像へ更新済みです。撮影メタデータの`version`はEditorの設定値で、配布ビルドのバージョンとは別です。
-
-武器8種類とエアストのタブレット画面は、`fps-cdx`側で以下の設定からまとめて撮影できます。説明用にプレイヤーとBotを静止させ、エアストのチャージを設定したオフライン撮影です。通常の試合で獲得したチャージを撮るものではありません。
-
-```bash
-# fps-cdxで実行
-bash scripts/capture-site-screenshots.sh scripts/site-shots-guides.json validation-logs/site-guides
-
-# このサイトのリポジトリで画像を確認してから実行
-python3 scripts/import-screenshots.py ../fps-cdx/validation-logs/site-guides --group guides
-```
-
-武器8種類のプレイ画面とエアストのタブレット画面は、2026-10-10に撮影した画像へ更新済みです。撮影情報は`config/screenshots.json`、画像と選択アイコンの出典は`config/guide-image-sources.json`に記録しています。選択アイコンはゲーム内の素材です。
 
 ## 公開内容
 
