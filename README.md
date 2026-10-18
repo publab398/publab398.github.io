@@ -53,7 +53,6 @@ git remote add origin https://github.com/publab398/publab398.github.io.git
 | サイト名・開発者名 | 398Playground | `config/site.json`の`name` |
 | コピーライト | © 2026 398Playground. All rights reserved. | `config/site.json`の`copyright` |
 | ゲーム名 | Vaultcore Arena | `config/projects.json`の`name` |
-| 旧開発名称 | Project-CDX | `config/projects.json`の`former_name` |
 | 開発・パブリッシャー | 398Playground | `config/projects.json`の`developer`・`publisher` |
 
 ページタイトル、Open Graph、ヘッダー・フッター、パンくず、ダウンロード欄はこれらの値から生成します。ヘッダーのロゴは「398」マーク（`templates/base.html`のSVG、`public/assets/favicon.svg`と同じ図柄）と「Playground」の文字で398Playgroundと読ませる表示です。Markdownの記事本文とリンク文にはゲーム名を直接書いているため、名称を変えるときは`content/`も検索してください。
@@ -62,7 +61,6 @@ git remote add origin https://github.com/publab398/publab398.github.io.git
 
 - ゲームページのURL `/project-cdx/`（`config/projects.json`の`slug`）と、記事のURL・`content/project-cdx/`
 - 画像のファイル名 `public/assets/project-cdx-*`
-- ビルドの実行ファイル名 `ProjectCDX.exe`（ゲーム側のビルド設定で決まるため、サイトでは変更しない）
 
 ## Google Driveのリンクを設定
 
@@ -74,7 +72,7 @@ git remote add origin https://github.com/publab398/publab398.github.io.git
   "version": "実際のビルド番号",
   "updated": "2026-10-09",
   "channel": "限定プレイテスト（開発ビルド）",
-  "install": "ダウンロードしたZIPを展開し、`ProjectCDX.exe`を起動します。",
+  "install": "ダウンロードしたZIPを展開し、`VaultcoreArena.exe`を起動します。",
   "limitations": ["既知の制限を1項目ずつ"],
   "note": "ダウンロードには、アクセスを許可されたGoogleアカウントが必要です。"
 }

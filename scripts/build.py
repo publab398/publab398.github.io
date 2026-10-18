@@ -198,7 +198,6 @@ def build_info(project):
         ("対応OS", project["platform"]),
         ("配布状態", build.get("channel")),
         *credits,
-        ("旧開発名称", project.get("former_name")),
     ]
     rows = [(label, esc(value)) for label, value in rows if value]
     if build.get("install"):

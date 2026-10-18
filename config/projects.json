@@ -2,7 +2,6 @@
   {
     "slug": "project-cdx",
     "name": "Vaultcore Arena",
-    "former_name": "Project-CDX",
     "developer": "398Playground",
     "publisher": "398Playground",
     "genre": "FPS / HARDPOINT",
@@ -24,10 +23,10 @@
     ],
     "build": {
       "drive_url": "https://drive.google.com/drive/folders/1aVFDwvroLlKS9aTu9MAdGhgV0t4odRKE?usp=sharing",
-      "version": "v0.4.1",
-      "updated": "2026-10-10",
+      "version": "v0.5.2",
+      "updated": "2026-10-18",
       "channel": "限定プレイテスト（開発ビルド）",
-      "install": "ダウンロードしたZIPを展開し、`ProjectCDX.exe`を起動します。",
+      "install": "ダウンロードしたZIPを展開し、`VaultcoreArena.exe`を起動します。",
       "limitations": [
         "オンライン対戦では、ホストと参加者が同じバージョンのビルドを使ってください。",
         "開発中のため、バージョンによって内容が変わることがあります。"

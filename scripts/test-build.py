@@ -70,12 +70,10 @@ class BuildChecks(unittest.TestCase):
         project = {'platform': 'Windows', 'developer': 'Dev', 'publisher': 'Dev', 'build': {}}
         info = build.build_info(project)
         self.assertIn('<dt>開発・配信</dt><dd>Dev</dd>', info)
-        self.assertNotIn('旧開発名称', info)
         self.assertNotIn('既知の制限', info)
-        project.update(publisher='Pub', former_name='Old', build={'install': 'Run `Game.exe`.'})
+        project.update(publisher='Pub', build={'install': 'Run `Game.exe`.'})
         info = build.build_info(project)
         self.assertIn('<dt>配信</dt><dd>Pub</dd>', info)
-        self.assertIn('<dd>Old</dd>', info)
         self.assertIn('<code>Game.exe</code>', info)
 
     def test_ffa_label_is_strong(self):
