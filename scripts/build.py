@@ -75,19 +75,36 @@ def breadcrumbs(items):
 
 
 def page(route, title, description, body):
-    canonical = (
-        ""
-        if route == "/404.html"
-        else f'<link rel="canonical" href="{esc(SITE["url"] + route)}">'
-    )
+    url = None if route == "/404.html" else SITE["url"] + route
+    canonical = f'<link rel="canonical" href="{esc(url)}">' if url else ""
+    og = {
+        "og:type": "website",
+        "og:site_name": SITE["name"],
+        "og:title": title,
+        "og:description": description,
+        "og:locale": "ja_JP",
+    }
+    if url:
+        og["og:url"] = url
+    project_links = []
+    for project in PROJECTS:
+        href = f'/{project["slug"]}/'
+        current = ' aria-current="page"' if route == href else ""
+        project_links.append(f'<a href="{href}"{current}>{esc(project["name"])}</a>')
     output = template(
         "base",
         title=esc(title),
         description=esc(description),
         canonical=canonical,
+        og="\n  ".join(
+            f'<meta property="{key}" content="{esc(value)}">'
+            for key, value in og.items()
+        ),
+        site_name=esc(SITE["name"]),
+        copyright=esc(SITE["copyright"]),
         body=body,
         home_current=' aria-current="page"' if route == "/" else "",
-        project_current=' aria-current="page"' if route == "/project-cdx/" else "",
+        project_links="".join(project_links),
     )
     output = re.sub(r'(\b(?:src|href)=")(/assets/[^"?]+)(")', asset_url, output)
     destination = OUT / (
@@ -168,6 +185,31 @@ def spotlight(entry):
     return f"""<a class="spotlight-card" href="{entry['url']}"><img src="{esc(cover)}" alt="{esc(alt)}" loading="lazy"><div class="spotlight-copy"><span class="eyebrow">{esc(entry.get('label', '紹介'))}</span><h3>{esc(entry['title'])}</h3><p>{esc(entry['summary'])}</p><span class="text-link">紹介を読む</span></div></a>"""
 
 
+def build_info(project):
+    """Download facts; optional fields that are missing are left out."""
+    build = project["build"]
+    developer, publisher = project.get("developer"), project.get("publisher")
+    credits = (
+        [("開発・配信", developer)]
+        if developer == publisher
+        else [("開発", developer), ("配信", publisher)]
+    )
+    rows = [
+        ("対応OS", project["platform"]),
+        ("配布状態", build.get("channel")),
+        *credits,
+        ("旧開発名称", project.get("former_name")),
+    ]
+    rows = [(label, esc(value)) for label, value in rows if value]
+    if build.get("install"):
+        rows.append(("インストール", MD.renderInline(build["install"])))
+    if build.get("limitations"):
+        notes = "".join(f"<li>{MD.renderInline(n)}</li>" for n in build["limitations"])
+        rows.append(("既知の制限", f"<ul>{notes}</ul>"))
+    items = "".join(f"<div><dt>{label}</dt><dd>{value}</dd></div>" for label, value in rows)
+    return f'<dl class="build-info">{items}</dl>'
+
+
 def project_page(project, features_entries, news_entries):
     build = project["build"]
     url = build["drive_url"]
@@ -216,6 +258,7 @@ def project_page(project, features_entries, news_entries):
         facts=facts,
         features=features,
         build_meta=f'<p class="build-meta">{" / ".join(meta)}</p>' if meta else "",
+        build_info=build_info(project),
         build_note=esc(build["note"]),
         download_action=action,
         overview=MD.render(
@@ -325,6 +368,7 @@ def main():
     notes.sort(key=lambda e: (e["sort_date"], e["url"]), reverse=True)
     body = template(
         "home",
+        site_name=esc(SITE["name"]),
         project_count=f"{len(PROJECTS):02d}",
         project_cards="".join(project_card(p, i) for i, p in enumerate(PROJECTS, 1)),
         latest_notes="".join(entry_row(e, True) for e in notes[:6])

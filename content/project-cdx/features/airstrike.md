@@ -58,4 +58,4 @@ Skyline Sky Deckのように複数階があるマップでは、タブレット�
 
 [Hardpointのルール紹介へ](/project-cdx/features/rules/) · [武器の紹介へ](/project-cdx/features/weapons/)
 
-[Project-CDXの紹介・最新ビルドへ](/project-cdx/)
+[Vaultcore Arenaの紹介・最新ビルドへ](/project-cdx/)

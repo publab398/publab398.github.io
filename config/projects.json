@@ -1,14 +1,17 @@
 [
   {
     "slug": "project-cdx",
-    "name": "Project-CDX",
+    "name": "Vaultcore Arena",
+    "former_name": "Project-CDX",
+    "developer": "398Playground",
+    "publisher": "398Playground",
     "genre": "FPS / HARDPOINT",
     "status": "開発中",
     "platform": "Windows",
     "tagline": "拠点を取り合うチーム対戦FPS",
     "description": "Hardpointがメインの対戦FPSです。時間とともに移動する拠点をチームで取り合います。最大12人のオンライン対戦と、Botとのオフライン対戦に対応しています。",
     "cover": "/assets/project-cdx-junction.png",
-    "cover_alt": "Project-CDXのマップJunction 55。転車台の機関車を囲むローポリの街並み。",
+    "cover_alt": "Vaultcore ArenaのマップJunction 55。転車台の機関車を囲むローポリの街並み。",
     "facts": [
       {"value": "12", "label": "オンライン最大人数"},
       {"value": "Hardpoint", "label": "拠点を取り合うチーム戦"},
@@ -23,7 +26,13 @@
       "drive_url": "https://drive.google.com/drive/folders/1aVFDwvroLlKS9aTu9MAdGhgV0t4odRKE?usp=sharing",
       "version": "v0.4.1",
       "updated": "2026-10-10",
-      "note": "Windows向けの開発ビルドです。ダウンロードには、アクセスを許可されたGoogleアカウントが必要です。"
+      "channel": "限定プレイテスト（開発ビルド）",
+      "install": "ダウンロードしたZIPを展開し、`ProjectCDX.exe`を起動します。",
+      "limitations": [
+        "オンライン対戦では、ホストと参加者が同じバージョンのビルドを使ってください。",
+        "開発中のため、バージョンによって内容が変わることがあります。"
+      ],
+      "note": "ダウンロードには、アクセスを許可されたGoogleアカウントが必要です。アクセス権がない場合は、Google Driveの画面からリクエストできます。承認されるまでダウンロードはできません。"
     }
   }
 ]

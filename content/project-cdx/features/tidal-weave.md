@@ -29,4 +29,4 @@ draft = false
 
 画像と紹介内容は開発時点のものです。
 
-[Project-CDXの紹介・最新ビルドへ](/project-cdx/)
+[Vaultcore Arenaの紹介・最新ビルドへ](/project-cdx/)

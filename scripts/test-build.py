@@ -66,6 +66,18 @@ class BuildChecks(unittest.TestCase):
         self.assertNotEqual(first, second)
         self.assertIn(hashlib.sha256(b'second').hexdigest()[:12], second)
 
+    def test_build_info_omits_missing_fields(self):
+        project = {'platform': 'Windows', 'developer': 'Dev', 'publisher': 'Dev', 'build': {}}
+        info = build.build_info(project)
+        self.assertIn('<dt>開発・配信</dt><dd>Dev</dd>', info)
+        self.assertNotIn('旧開発名称', info)
+        self.assertNotIn('既知の制限', info)
+        project.update(publisher='Pub', former_name='Old', build={'install': 'Run `Game.exe`.'})
+        info = build.build_info(project)
+        self.assertIn('<dt>配信</dt><dd>Pub</dd>', info)
+        self.assertIn('<dd>Old</dd>', info)
+        self.assertIn('<code>Game.exe</code>', info)
+
     def test_ffa_label_is_strong(self):
         path = Path(__file__).resolve().parents[1] / 'content/project-cdx/features/rules.md'
         body = path.read_text(encoding='utf-8').split('+++', 2)[2]

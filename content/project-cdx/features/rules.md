@@ -9,7 +9,7 @@ cover_alt = "Hardpointのプレイ画面。上部に両チームのスコアと�
 draft = false
 +++
 
-Project-CDXのメインモードは**Hardpoint**です。ALPHAとBRAVOの2チームに分かれて、時間とともに移動する拠点を取り合います。敵を倒して入口を開けたり、味方がいる拠点を守ったりしながら、チームの得点を増やしていきます。
+Vaultcore Arenaのメインモードは**Hardpoint**です。ALPHAとBRAVOの2チームに分かれて、時間とともに移動する拠点を取り合います。敵を倒して入口を開けたり、味方がいる拠点を守ったりしながら、チームの得点を増やしていきます。
 
 ## どうすれば得点が入る？
 
@@ -55,4 +55,4 @@ Project-CDXのメインモードは**Hardpoint**です。ALPHAとBRAVOの2チー
 
 紹介内容は開発時点のものです。
 
-[Project-CDXの紹介・最新ビルドへ](/project-cdx/)
+[Vaultcore Arenaの紹介・最新ビルドへ](/project-cdx/)

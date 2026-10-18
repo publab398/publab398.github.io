@@ -16,4 +16,4 @@ draft = true
 
 ![画像の説明](/assets/project-cdx-gameplay.png)
 
-[Project-CDXへ戻る](/project-cdx/)
+[Vaultcore Arenaへ戻る](/project-cdx/)
