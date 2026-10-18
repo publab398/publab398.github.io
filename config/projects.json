@@ -23,8 +23,8 @@
     ],
     "build": {
       "drive_url": "https://drive.google.com/drive/folders/1aVFDwvroLlKS9aTu9MAdGhgV0t4odRKE?usp=sharing",
-      "version": "v0.5.2",
-      "updated": "2026-10-18",
+      "version": "v0.5.3",
+      "updated": "2026-10-19",
       "channel": "限定プレイテスト（開発ビルド）",
       "install": "ダウンロードしたZIPを展開し、`VaultcoreArena.exe`を起動します。",
       "limitations": [
