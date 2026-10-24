@@ -1,8 +1,8 @@
 +++
-title = "武器紹介：8つのメイン武器"
+title = "武器紹介：9つのメイン武器"
 date = "2026-10-10"
-updated = "2026-10-10T01:32:04+09:00"
-summary = "近距離の連射から遠距離の一撃まで。見た目と使い方で選ぶ、8つのメイン武器。"
+updated = "2026-10-24"
+summary = "近距離の連射から遠距離の一撃まで。Hawkeyeを加えた9つのメイン武器を、見た目と使い方で紹介します。"
 label = "武器紹介"
 cover = "/assets/project-cdx-weapon-raven-k27.png"
 cover_alt = "Raven K27を構えたプレイ画面。ホロサイトと武器名・弾数表示が見える。"
@@ -56,7 +56,15 @@ name = "Pulse Driver"
 type = "テック武器"
 image = "pulse-driver"
 description = "腰撃ち専用。移動・空中でも弾がばらけない。弾速を見越して、動く敵の少し先を狙おう。"
+
+[[weapons]]
+name = "Hawkeye"
+type = "リボルバー"
+image = "hawkeye"
+description = "9発装填のセミオート。小型レッドドットで狙い、大きく跳ねる反動の戻りに合わせて一発ずつ当てよう。"
 +++
+
+[新武器Hawkeyeの詳しい紹介](/project-cdx/features/hawkeye/)
 
 ## 射撃場で試す
 

@@ -40,5 +40,19 @@
     "sha256": "3ecb64927ff83266eaeba0eda032ac9c94a0be44369afbb86e64c8b6974cf8f7",
     "importedDate": "2026-10-10",
     "note": "Existing software geometry preview from game documentation; not a Unity gameplay capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-afterglow.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "docs/stages/afterglow/canopy-from-south.png",
+    "sha256": "95c6418f82e9bde7cc2d86ad5016dbec5ae5e4a2599de0787416678705cd5078",
+    "importedDate": "2026-10-24",
+    "note": "Existing development capture; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-afterglow-sky-terrace.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/afterglow/afterglow/look-square-from-skyterrace.png",
+    "sha256": "8e915aa9d8e0bf83818ea7def2cd33112e7b50284b8a866b266a0c97f64bbba1",
+    "importedDate": "2026-10-24",
+    "note": "Existing development capture; not a new site capture. Capture date and release build correspondence unverified."
   }
 }

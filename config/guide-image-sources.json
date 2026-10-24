@@ -86,5 +86,19 @@
     "importedDate": "2026-10-10",
     "captureMetadata": "config/screenshots.json",
     "stagedForGuide": true
+  },
+  "project-cdx-weapon-hawkeye.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/weapon-view/revolver-fp-hip.png",
+    "sha256": "dc58f39b0f34c0563007de63af1aac64614ebc45357369542ca4fc3996025ff8",
+    "importedDate": "2026-10-24",
+    "note": "Existing development capture; not a new site capture. Capture date and release build correspondence unverified."
+  },
+  "project-cdx-weapon-hawkeye-reload.png": {
+    "sourceRepository": "fps-cdx",
+    "sourcePath": "validation-logs/weapon-view/revolver-fp-reload0-8.png",
+    "sha256": "1bc70f60ee1472a65a977603a9f24428687252e709fee4ee5d8277723d8b1e3e",
+    "importedDate": "2026-10-24",
+    "note": "Existing development capture; not a new site capture. Capture date and release build correspondence unverified."
   }
 }
